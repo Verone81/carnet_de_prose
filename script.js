@@ -1,4 +1,5 @@
 const fichiersPDF = [
+    "Sir_Willis.pdf",
     "Le_taxidermiste.pdf",
     "Le_secret_du_poker.pdf",
     "L_opération.pdf",
