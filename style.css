@@ -1,52 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&display=swap');
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0a0f2f;
+  font-family: 'Georgia', serif;
+  color: #f0f0f0;
+  border: 5px solid black;
+  overflow: auto; /* empêche le scroll vertical */
+}
+.serpent-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* 👈 important pour éviter que les éléments passent en-dessous */
+  margin: 40px 0;
+  overflow-x: auto; /* 👈 permet de scroller horizontalement si trop étroit */
+  gap: 20px;
+}
 
-body {
-  font-family: 'Spectral', serif;
-  background-color: #0c0c0c;
-  color: #d6d6d6;
-  margin: 0 auto;
-  max-width: 900px;
-  padding: 2rem;
-  background-image: radial-gradient(circle at 50% 0%, #1a1a1a, #0c0c0c);
+.serpent-gauche,
+.serpent-droite {
+  height: 800px;
+  width: 400px;
+  max-width: 600px;
+  opacity: 0.5;
+  pointer-events: none;
+  flex-shrink: 0; /* 👈 empêche de rétrécir */
+}
+
+.cadre-pdf {
+  width: 600px;
+  height: 800px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  max-width: 80vw;
+  flex-shrink: 0;
+}
+header {
+  position: relative;
+  
+  height: 200px; /* 🧠 espace réservé pour l’image */
+  
+}
+
+.lune-banniere {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px; /* ajuste selon ta bannière */
+  height: 200px;
+  z-index: 10;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 👈 centre pile au milieu */
+  z-index: 20;
+  font-size: 2.5em;
+  color: #f0f0f0;
   text-align: center;
-  color: #aa0000;
-  font-size: 3rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 3rem;
-  text-shadow: 0 0 10px rgba(170, 0, 0, 0.6);
+  text-shadow: 2px 2px 5px #000;
+  margin: 0; /* en bonus pour éviter les marges par défaut */
+}
+.rayons-lune {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200vw;
+  height: 100vh;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 5;
+  pointer-events: none;
+  animation: rayonTraverse 20s linear infinite;
+  mix-blend-mode: screen; /* pour bien fusionner avec le fond */
 }
 
-.texte {
-  background: rgba(20, 20, 20, 0.8);
-  border: 1px solid #331111;
-  border-left: 6px solid #660000;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(2px);
-}
-
-.texte:hover {
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-}
-
-.texte h2 {
-  color: #b30000;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 5px rgba(179, 0, 0, 0.5);
-}
-
-.texte iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-  border-radius: 8px;
-  filter: grayscale(100%) contrast(120%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+@keyframes rayonTraverse {
+  0% {
+    transform: translateX(-50%) rotate(15deg) translateY(-100%);
+  }
+  100% {
+    transform: translateX(-50%) rotate(15deg) translateY(100%);
+  }
 }
