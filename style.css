@@ -52,7 +52,8 @@ header {
   width: 1400px; /* ajuste selon ta bannière */
   height: 200px;
   z-index: 10;
-  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%); /* Pour Safari et Chrome */
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%); /* Standard */
   pointer-events: none;
 }
 
