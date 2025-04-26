@@ -4,20 +4,57 @@
   <meta charset="UTF-8">
   <title>Carnet de Prose</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Petites améliorations directement dans le HTML pour l'exemple */
+    .audio-bouton {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <img src="images/lune.jpg" alt="lune" class="lune-banniere">
     <div class="rayons-lune"></div>
     <h1>📜 Carnet de Prose</h1>
   </header>
 
-  
-  <audio autoplay loop hidden>
+  <!-- Bouton pour contrôler le son -->
+  <button id="toggle-audio" class="audio-bouton">🎵</button>
+
+  <!-- Balise audio cachée -->
+  <audio id="musique" loop>
     <source src="son/nuit.wav" type="audio/wav">
+    Votre navigateur ne supporte pas l'élément audio.
   </audio>
-  
+
   <div id="contenu"></div> 
+
   <script src="script.js"></script>
+  <script>
+    // Gestion de l'audio
+    const boutonAudio = document.getElementById('toggle-audio');
+    const audio = document.getElementById('musique');
+
+    boutonAudio.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        boutonAudio.textContent = '🔇'; // Icône "couper le son"
+      } else {
+        audio.pause();
+        boutonAudio.textContent = '🎵'; // Icône "musique"
+      }
+    });
+  </script>
+
 </body>
 </html>
+
